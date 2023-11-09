@@ -6,9 +6,11 @@ import './index.css'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
-  <>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </>,
+	// BrowserRouter es un componente que nos permite
+	// definir las rutas de nuestra aplicación
+	<>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</>
 )
