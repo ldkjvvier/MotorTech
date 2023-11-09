@@ -1,34 +1,43 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-
+import { api } from '../../constants'
 export const Login = () => {
 	const [error, setError] = useState('')
 
 	const handleSubmit = async (e) => {
+		// Evitamos que el formulario recargue la página
 		e.preventDefault()
 		const { email, password } = e.target
 
-		const response = fetch('http://localhost:3000/api/auth/login', {
+		// Enviamos los datos al servidor
+		// para validarlos
+		const response = await fetch(`${api}/api/auth/local`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				email: email.value,
+				identifier: email.value,
 				password: password.value,
-			})
+			}),
 		})
-		
+		// Obtenemos la respuesta del servidor
+		// en formato JSON
 		const data = await response.json()
 
+		// Evaluamos la respuesta del servidor para
+		// redireccionar al usuario o mostrar un error
 		if (response.status === 200) {
-			localStorage.setItem('token', data.token)
-			localStorage.setItem('user', JSON.stringify(data.user))
-			window.location.href = '/'
-		} else {
-			setError(data.message)
+			console.log(data)
+			window.location.href = 'motortech-cl'
 		}
-
+		if (response.status === 400) {
+			console.log(data);
+			setError('Usuario o contraseña incorrectos')
+		}
+		if (response.status === 500) {
+			setError('Error del servidor')
+		}
 	}
 
 	return (
@@ -46,7 +55,12 @@ export const Login = () => {
 				</div>
 
 				<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-					<form className="space-y-6" action="#" method="dialog" onSubmit={(e) => handleSubmit(e)}>
+					<form
+						className="space-y-6"
+						action="#"
+						method="dialog"
+						onSubmit={(e) => handleSubmit(e)}
+					>
 						<div>
 							<label
 								htmlFor="email"
@@ -96,18 +110,11 @@ export const Login = () => {
 								/>
 							</div>
 						</div>
-						{
-							error && (
-								<div className="text-red-500 text-center">
-									{error}
-								</div>
-							)
-						}
+						{error && (
+							<div className="text-red-500 text-center font-semibold">{error}</div>
+						)}
 						<div>
-							<button
-								/* type="submit" */
-								className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-							>
+							<button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 								Entrar
 							</button>
 							<Link
