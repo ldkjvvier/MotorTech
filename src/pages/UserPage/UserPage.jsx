@@ -4,29 +4,34 @@ import Chat from '../../components/Chat/Chat'
 import { useSelector } from 'react-redux'
 
 export const UserPage = () => {
-	const usuario = useSelector((state) => state.user)
+	const user = useSelector((state) => state.user)
 	return (
 		<>
 			<Header />
-			<div className="h-screen flex ">
+
+
+			<main className="h-screen flex ">
 				{/* <Chat /> */}
 				<section>
-					<p>Tarjeta de usuario</p>
+					<p className="">Tarjeta de usuario</p>
 					<ul className="bg-black">
-						<li>Nombre: {usuario.username}</li>
-						<li>Apellido: {usuario.lastname}</li>
-						<li>Correo: {usuario.email}</li>
-						<li>ID: {usuario.id}</li>
+						<li>Nombre: {user.username}</li>
+						<li>Apellido: {user.lastname}</li>
+						<li>Correo: {user.email}</li>
+						<li>ID: {user.id}</li>
 						<li>
 							<img
-								src={usuario.avatar}
+								src={user.avatar}
 								alt="avatar"
 								className="h-10 w-10 rounded-full"
 							/>
 						</li>
 					</ul>
 				</section>
-			</div>
+			</main>
+
+
+
 			<Footer />
 		</>
 	)

@@ -14,7 +14,7 @@ export const Login = () => {
 		// Evitamos que el formulario recargue la página
 		e.preventDefault()
 		const { email, password } = e.target
-
+		
 		try {
 			// Enviamos los datos al servidor
 			// para validarlos
@@ -40,22 +40,22 @@ export const Login = () => {
 					dispatch(addUser(data.user))
 					// Redireccionamos a la página de usuario
 					navigate('/motortech-cl', { replace: true })
-					break;
+					break
 
 				case 400:
 					setError('Correo o contraseña incorrectos')
-					break;
+					break
 
 				case 500:
 					setError('Error en el servidor')
-					break;
+					break
 
 				case 429:
 					setError('Demasiadas peticiones al servidor')
-					break;
+					break
 
 				default:
-					break;
+					break
 			}
 		} catch (error) {
 			console.error('Error en la petición', error)
@@ -65,14 +65,14 @@ export const Login = () => {
 
 	return (
 		<>
-			<div className="align-middle flex min-h-full flex-auto flex-col justify-center items-center px-6 py-12 lg:px-8">
+			<div className="align-middle flex min-h-screen flex-auto flex-col justify-center items-center px-6 py-12 lg:px-8">
 				<div className="sm:mx-auto sm:w-full sm:max-w-sm">
 					<img
 						className="mx-auto h-10 w-auto"
 						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
 						alt="Your Company"
 					/>
-					<h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+					<h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
 						Ingresa con tu cuenta
 					</h2>
 				</div>
