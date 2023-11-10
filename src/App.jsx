@@ -5,12 +5,14 @@ export const App = () => {
 	return (
 		// definimos las rutas de nuestra aplicación
 		<Routes>
-			<Route path="/" element={<Login />} />
+			<Route path="" element={<Login />} />
+			<Route path="motortech-cl" element={<UserPage />} />
+
+			{/* Ruta para manejar si la pagina no se encuentra */}
 			<Route
 				path="*"
 				element={<h1 className="text-black">Not Found</h1>}
 			/>
-			<Route path="motortech-cl" element={<UserPage />} />
 		</Routes>
 	)
 }

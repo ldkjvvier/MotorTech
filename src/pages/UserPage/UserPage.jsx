@@ -1,27 +1,31 @@
 import { Header } from '../../components/Header/Header'
 import { Footer } from '../../components/Footer/Footer'
 import Chat from '../../components/Chat/Chat'
-import { useEffect } from 'react'
-import { api } from '../../constants'
+import { useSelector } from 'react-redux'
 
 export const UserPage = () => {
-	useEffect(() => {
-		document.title = 'MotorTech | Chat'
-		fetch(`${api}/api/resena`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => console.log(data))
-	}, [])
-
+	const usuario = useSelector((state) => state.user)
 	return (
 		<>
 			<Header />
 			<div className="h-screen flex ">
-				<Chat />
+				{/* <Chat /> */}
+				<section>
+					<p>Tarjeta de usuario</p>
+					<ul className="bg-black">
+						<li>Nombre: {usuario.username}</li>
+						<li>Apellido: {usuario.lastname}</li>
+						<li>Correo: {usuario.email}</li>
+						<li>ID: {usuario.id}</li>
+						<li>
+							<img
+								src={usuario.avatar}
+								alt="avatar"
+								className="h-10 w-10 rounded-full"
+							/>
+						</li>
+					</ul>
+				</section>
 			</div>
 			<Footer />
 		</>

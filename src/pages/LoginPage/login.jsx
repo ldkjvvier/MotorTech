@@ -1,42 +1,65 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { api } from '../../constants'
+import { useDispatch } from 'react-redux'
+import { addUser } from '../../redux/userSlice'
 export const Login = () => {
+	const navigate = useNavigate()
 	const [error, setError] = useState('')
+	// useDispatch es un hook que nos permite
+	// obtener el método dispatch de redux
+	const dispatch = useDispatch()
 
 	const handleSubmit = async (e) => {
 		// Evitamos que el formulario recargue la página
 		e.preventDefault()
 		const { email, password } = e.target
 
-		// Enviamos los datos al servidor
-		// para validarlos
-		const response = await fetch(`${api}/api/auth/local`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				identifier: email.value,
-				password: password.value,
-			}),
-		})
-		// Obtenemos la respuesta del servidor
-		// en formato JSON
-		const data = await response.json()
+		try {
+			// Enviamos los datos al servidor
+			// para validarlos
+			const response = await fetch(`${api}/api/auth/local`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					identifier: email.value,
+					password: password.value,
+				}),
+			})
+			// Obtenemos la respuesta del servidor en formato JSON
+			const data = await response.json()
+			// Dependiendo de la respuesta del servidor
+			// mostramos un mensaje u otro
+			switch (response.status) {
+				case 200:
+					// Guardamos el token en el localstorage
+					localStorage.setItem('token', data.jwt)
+					// Guardamos el usuario en la store de redux
+					dispatch(addUser(data.user))
+					// Redireccionamos a la página de usuario
+					navigate('/motortech-cl', { replace: true })
+					break;
 
-		// Evaluamos la respuesta del servidor para
-		// redireccionar al usuario o mostrar un error
-		if (response.status === 200) {
-			console.log(data)
-			window.location.href = 'motortech-cl'
-		}
-		if (response.status === 400) {
-			console.log(data);
-			setError('Usuario o contraseña incorrectos')
-		}
-		if (response.status === 500) {
-			setError('Error del servidor')
+				case 400:
+					setError('Correo o contraseña incorrectos')
+					break;
+
+				case 500:
+					setError('Error en el servidor')
+					break;
+
+				case 429:
+					setError('Demasiadas peticiones al servidor')
+					break;
+
+				default:
+					break;
+			}
+		} catch (error) {
+			console.error('Error en la petición', error)
+			setError('Error en la petición')
 		}
 	}
 
@@ -111,7 +134,9 @@ export const Login = () => {
 							</div>
 						</div>
 						{error && (
-							<div className="text-red-500 text-center font-semibold">{error}</div>
+							<div className="text-red-500 text-center font-semibold">
+								{error}
+							</div>
 						)}
 						<div>
 							<button className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
