@@ -5,15 +5,16 @@ import { useSelector } from 'react-redux'
 
 export const UserPage = () => {
 	const user = useSelector((state) => state.user)
+
+
 	return (
 		<>
 			<Header />
 
-
 			<main className="h-screen flex ">
 				{/* <Chat /> */}
-				<section>
-					<p className="">Tarjeta de usuario</p>
+				<section className=''>
+					<p className="text-black">Tarjeta de usuario</p>
 					<ul className="bg-black">
 						<li>Nombre: {user.username}</li>
 						<li>Apellido: {user.lastname}</li>
@@ -29,8 +30,6 @@ export const UserPage = () => {
 					</ul>
 				</section>
 			</main>
-
-
 
 			<Footer />
 		</>
