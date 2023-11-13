@@ -1,5 +1,5 @@
-import { Header } from '../../components/Header/Header'
-import { Footer } from '../../components/Footer/Footer'
+import { Header } from '../../components/Header/header'
+import { Footer } from '../../components/Footer/footer'
 import Chat from '../../components/Chat/Chat'
 import { useSelector } from 'react-redux'
 

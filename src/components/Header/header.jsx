@@ -6,7 +6,7 @@ import {
 } from 'flowbite-react'
 import { customTheme } from '../../constants'
 import { useSelector } from 'react-redux'
-
+import { Logout } from '../../pages/Account/logout'
 export const Header = () => {
 	const user = useSelector((state) => state.user)
 
@@ -92,7 +92,7 @@ export const Header = () => {
 										/>
 									}
 								>
-									<Dropdown.Header>
+									<Dropdown.Header className="text-gray-900 dark:text-white">
 										<span className="block text-sm">
 											{`${user.username} ${user.lastname}`}
 										</span>
@@ -100,11 +100,18 @@ export const Header = () => {
 											{user.email}
 										</span>
 									</Dropdown.Header>
-									<Dropdown.Item>Dashboard</Dropdown.Item>
-									<Dropdown.Item>Settings</Dropdown.Item>
-									<Dropdown.Item>Earnings</Dropdown.Item>
-									<Dropdown.Divider />
-									<Dropdown.Item>Sign out</Dropdown.Item>
+									<Dropdown.Item className="text-gray-900 dark:text-white">
+										Perfil
+									</Dropdown.Item>
+									<Dropdown.Item className="text-gray-900 dark:text-white">
+										Configuración
+									</Dropdown.Item>
+									<Dropdown.Divider theme={{ theme: customTheme }} />
+									<Logout>
+										<Dropdown.Item className="text-gray-900 dark:text-white">
+											Cerrar sesión
+										</Dropdown.Item>
+									</Logout>
 								</Dropdown>
 							</div>
 						</div>

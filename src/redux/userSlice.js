@@ -25,13 +25,9 @@ export const userSlice = createSlice({
       state.avatar = avatar
 		},
     // Este reducer se encarga de eliminar los datos del usuario
-		removeUser: (state) => {
-			state.id = ''
-			state.username = ''
-			state.lastname = ''
-			state.email = ''
-			state.avatar =
-				'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'
+		removeUser: () => {
+			localStorage.removeItem('token')
+			return initialState;
 		},
 	},
 })
