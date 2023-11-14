@@ -12,14 +12,14 @@ export const App = () => {
 			<Routes>
 				<Route path="/" element={<Login />} exact />
 				<Route path="motortech-cl" element={<UserPage />} exact />
+				<Route path="*" element={<Error404 />} />
 			</Routes>
 		)
 	} else {
 		// Rutas publicas
 		return (
 			<Routes>
-				<Route path="" element={<Login />} />
-				<Route path="*" element={<Error404 />} />
+				<Route path="*" element={<Login />} />
 			</Routes>
 		)
 	}
