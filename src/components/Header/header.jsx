@@ -7,12 +7,13 @@ import {
 import { customTheme } from '../../constants'
 import { useSelector } from 'react-redux'
 import { Logout } from '../../pages/Account/logout'
+import { Link } from 'react-router-dom'
 export const Header = () => {
 	const user = useSelector((state) => state.user)
 
 	return (
 		<header>
-			<nav className="bg-white dark:bg-gray-800 shadow-xl">
+			<nav className="bg-white dark:bg-gray-800 border-b dark:border-gray-500 shadow-xl">
 				<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 p-3 h-auto">
 					<div className="flex flex-wrap  items-center justify-between">
 						<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -100,7 +101,12 @@ export const Header = () => {
 											{user.email}
 										</span>
 									</Dropdown.Header>
-									<Dropdown.Item className="text-gray-900 dark:text-white">
+
+									<Dropdown.Item
+										as={Link}
+										to={`motortech-cl/profile`}
+										className="text-gray-900 dark:text-white"
+									>
 										Perfil
 									</Dropdown.Item>
 									<Dropdown.Item className="text-gray-900 dark:text-white">

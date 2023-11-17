@@ -1,6 +1,96 @@
+import { Message } from './message'
+import { useState, useEffect } from 'react'
+import { io } from 'socket.io-client'
+import { useSelector } from 'react-redux'
+import React from 'react'
 const Chat = () => {
+	const user = useSelector((state) => state.user)
+
+	const [socket, setSocket] = useState(null)
+	const [roomname, setRoomname] = useState('general')
+	const [message, setMessage] = useState('')
+	const [chat, setChat] = useState([])
+	const [users, setUsers] = useState([])
+
+	useEffect(() => {
+		const newSocket = io('http://localhost:1337', {
+			withCredentials: true,
+			extraHeaders: {
+				'my-custom-header': 'your-custom-value',
+			},
+		})
+
+		newSocket.on('connect', () => {
+			console.log('Socket connected')
+		})
+
+		newSocket.on('disconnect', () => {
+			console.log('Socket disconnected')
+			setChat([])
+		})
+
+		setSocket(newSocket)
+
+		return () => {
+			newSocket.disconnect()
+		}
+	}, [])
+
+	useEffect(() => {
+		if (socket) {
+			handleJoin()
+			socket.on('message', (data) => {
+				if (data.message) {
+					console.log('dentro')
+					// Usa la propiedad messageData para actualizar el estado del chat
+					setChat((prevChat) => [
+						...prevChat,
+						{
+							userId: data.userId,
+							username: data.username,
+							message: data.message,
+						},
+					])
+				}
+			})
+
+			socket.on('roomUsers', (data) => {
+				setUsers(data.users)
+				console.log(users);
+			})
+		}
+	}, [socket])
+
+	const handleJoin = () => {
+		if (user.username && roomname) {
+			const username = user.username
+			socket.emit('joinRoom', { username, roomname })
+			socket.on('getChat', (data) => {
+				setChat(
+					data.messageData.map((message) => ({
+						userId: message.user,
+						username: message.user,
+						message: message.message,
+					}))
+				)
+			})
+		}
+	}
+
+	const handleSendMessage = () => {
+		if (message) {
+			socket.emit('chat', message)
+			scrollToBottom()
+		}
+	}
+
+	const scrollToBottom = () => {
+		const scrollMessage = document.getElementById('messages')
+		scrollMessage.scroll(0, 10000)
+	}
+
 	return (
-		<div className="flex-1 p-2 sm:p-6 justify-between flex flex-col h-96 w-6/12 ">
+		<div className="p-2 sm:p-6 justify-between flex flex-col h-full  ">
 			<div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
 				<div className="relative flex items-center space-x-4">
 					<div className="relative">
@@ -23,7 +113,7 @@ const Chat = () => {
 					<div className="flex flex-col leading-tight">
 						<div className="text-2xl mt-1 flex items-center">
 							<span className="text-gray-700 mr-3">
-								Anderson Vanhron
+								{user.username}
 							</span>
 						</div>
 						<span className="text-lg text-gray-600">
@@ -91,35 +181,19 @@ const Chat = () => {
 					</button>
 				</div>
 			</div>
-			<div
+
+			{/* Aqui van los mensajes */}
+			<article
 				id="messages"
 				className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
 			>
-				{/* Aquí irían los mensajes */}
+				{chat.map((msg, index) => (
+					<React.Fragment key={index}>
+						<Message username={msg.username} message={msg.message} />
+					</React.Fragment>
+				))}
+			</article>
 
-				<div className="chat-message">
-					<div className="flex items-end">
-						<div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-2 items-start">
-							<div>
-								<span className="px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600">
-									Lorem ipsum dolor sit amet consectetur adipisicing
-									elit. Quas cupiditate laborum fugiat.
-								</span>
-							</div>
-						</div>
-						<img
-							src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-							alt="My profile"
-							className="w-6 h-6 rounded-full order-1"
-						/>
-					</div>
-				</div>
-
-        
-
-
-        
-			</div>
 			<div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
 				<div className="relative flex">
 					<span className="absolute inset-y-0 flex items-center">
@@ -146,7 +220,9 @@ const Chat = () => {
 					<input
 						type="text"
 						placeholder="Write your message!"
-						className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3"
+						className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 pr-64 bg-gray-200 rounded-md py-3"
+						value={message}
+						onChange={(e) => setMessage(e.target.value)}
 					/>
 					<div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
 						<button
@@ -215,6 +291,7 @@ const Chat = () => {
 						<button
 							type="button"
 							className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+							onClick={handleSendMessage}
 						>
 							<span className="font-bold">Send</span>
 							<svg

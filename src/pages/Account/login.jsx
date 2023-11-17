@@ -30,6 +30,7 @@ export const Login = () => {
 			})
 			// Obtenemos la respuesta del servidor en formato JSON
 			const data = await response.json()
+			console.log(data);
 			// Dependiendo de la respuesta del servidor
 			// mostramos un mensaje u otro
 			switch (response.status) {

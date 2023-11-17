@@ -6,6 +6,11 @@ const initialState = {
 	username: 'undefined',
 	lastname: 'undefined',
 	email: 'undefined',
+	direccion: 'undefined',
+	telefono: 'undefined',
+	genero: 'undefined',
+	nacimiento: 'undefined',
+	createdAt: 'undefined',
 	avatar:
 		'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 }
@@ -17,11 +22,16 @@ export const userSlice = createSlice({
 	reducers: {
     // Este reducer se encarga de almacenar los datos del usuario
 		addUser: (state, action) => {
-      const { id, username, lastname, email, avatar } = action.payload
+      const { id, username, lastname, email, direccion, telefono, genero, nacimiento, createdAt, avatar } = action.payload
       state.id = id
       state.username = username
       state.lastname = lastname
       state.email = email
+			state.direccion = direccion
+			state.telefono = telefono
+			state.genero = genero
+			state.nacimiento = nacimiento
+			state.fecha_creacion = createdAt
       state.avatar = avatar
 		},
     // Este reducer se encarga de eliminar los datos del usuario
