@@ -17,13 +17,13 @@ export const Header = () => {
 				<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 p-3 h-auto">
 					<div className="flex flex-wrap  items-center justify-between">
 						<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-							<div className="flex flex-shrink-0 items-center">
+							<Link className="flex flex-shrink-0 items-center" to={'motortech-cl'}>
 								<img
 									className="h-8 w-auto"
 									src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 									alt="Your Company"
 								/>
-							</div>
+							</Link>
 							{/* Barra de navegacion */}
 							<section className=" sm:ml-6 sm:block">
 								<div className="flex space-x-4">

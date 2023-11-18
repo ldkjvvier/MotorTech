@@ -14,7 +14,7 @@ export const Login = () => {
 		// Evitamos que el formulario recargue la página
 		e.preventDefault()
 		const { email, password } = e.target
-		
+
 		try {
 			// Enviamos los datos al servidor
 			// para validarlos
@@ -30,7 +30,7 @@ export const Login = () => {
 			})
 			// Obtenemos la respuesta del servidor en formato JSON
 			const data = await response.json()
-			console.log(data);
+			console.log(data)
 			// Dependiendo de la respuesta del servidor
 			// mostramos un mensaje u otro
 			switch (response.status) {
@@ -144,10 +144,10 @@ export const Login = () => {
 								Entrar
 							</button>
 							<Link
-								to="motortech-cl"
+								to="register"
 								className="mt-3 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 							>
-								Entrar como invitado
+								Crear cuenta
 							</Link>
 						</div>
 					</form>
