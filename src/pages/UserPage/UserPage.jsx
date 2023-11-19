@@ -1,12 +1,9 @@
-
+import Chat from "../../components/Chat/Chat"
 export const UserPage = () => {
-
 
 	return (
 		<>
-			<main className="h-screen flex ">
-
-			</main>
+			<Chat />
 		</>
 	)
 }

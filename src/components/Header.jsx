@@ -4,9 +4,9 @@ import {
 	Flowbite,
 	Avatar,
 } from 'flowbite-react'
-import { customTheme } from '../../constants'
+import { customTheme } from '../constants'
 import { useSelector } from 'react-redux'
-import { Logout } from '../../pages/Account/logout'
+import { Logout } from '../pages/Account/logout'
 import { Link } from 'react-router-dom'
 export const Header = () => {
 	const user = useSelector((state) => state.user)
@@ -17,7 +17,10 @@ export const Header = () => {
 				<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 p-3 h-auto">
 					<div className="flex flex-wrap  items-center justify-between">
 						<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-							<Link className="flex flex-shrink-0 items-center" to={'motortech-cl'}>
+							<Link
+								className="flex flex-shrink-0 items-center"
+								to={'/'}
+							>
 								<img
 									className="h-8 w-auto"
 									src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -27,31 +30,31 @@ export const Header = () => {
 							{/* Barra de navegacion */}
 							<section className=" sm:ml-6 sm:block">
 								<div className="flex space-x-4">
-									<a
-										href="#"
-										className="bg-gray-900 text-dark dark:text-white rounded-md px-3 py-2 text-sm font-medium"
+									<Link
+										to={'motortech-cl'}
+										className="bg-gray-900 text-dark dark:text-white rounded-md px-3 py-2 text-sm font-medium dark:bg-gray-700 transition hover:bg-gray-700 dark:hover:bg-gray-600"
 										aria-current="page"
 									>
-										Dashboard
-									</a>
-									<a
-										href="#"
-										className="text-black dark:text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-semibold"
+										Inicio
+									</Link>
+									<Link
+										to={'motortech-cl/vehicles'}
+										className="text-black dark:text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-semibold transition"
 									>
-										Team
-									</a>
-									<a
+										Servicios
+									</Link>
+									<Link
 										href="#"
-										className="text-black dark:text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-semibold"
+										className="text-black dark:text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-semibold transition"
 									>
-										Calendar
-									</a>
-									<a
-										href="#"
-										className="text-black dark:text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-semibold"
+										Contacto
+									</Link>
+									<Link
+										to={'motortech-cl/reports'}
+										className="text-black dark:text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-semibold transition"
 									>
-										Reports
-									</a>
+										Reportes
+									</Link>
 								</div>
 							</section>
 						</div>

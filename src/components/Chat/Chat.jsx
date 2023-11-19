@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { io } from 'socket.io-client'
 import { useSelector } from 'react-redux'
 import React from 'react'
-const Chat = () => {
+export const Chat = () => {
 	const user = useSelector((state) => state.user)
 
 	const [socket, setSocket] = useState(null)

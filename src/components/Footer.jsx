@@ -26,18 +26,18 @@ export const Footer = () => {
 							<ul className="text-gray-500 dark:text-gray-400 font-medium">
 								<li className="mb-4">
 									<a
-										href="https://flowbite.com/"
+										href="https://flowbite.com/docs"
 										className="hover:underline"
 									>
-										Flowbite
+										Documentation
 									</a>
 								</li>
 								<li>
 									<a
-										href="https://tailwindcss.com/"
+										href="https://flowbite.com/docs/changelog"
 										className="hover:underline"
 									>
-										Tailwind CSS
+										Changelog
 									</a>
 								</li>
 							</ul>

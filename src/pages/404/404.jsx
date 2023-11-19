@@ -6,7 +6,7 @@ export const Error404 = () => {
 		<main className="grid min-h-screen place-items-center ">
 			{/* bg-my-background  */}
 			<div className="text-center flex flex-col items-center pb-20">
-				<img src="404.png" className="h-28 w-auto ml-6 mb-6"></img>
+				<img src="/404.png" className="h-28 w-auto ml-6 mb-6"></img>
 				<p className="font-semibold text-indigo-600 text-7xl">404</p>
 				<h1 className="mt-4 text-2xl font-semibold tracking-tight text-gray-400 sm:text-5xl">
 					¿¡OOOOOOPS!?
