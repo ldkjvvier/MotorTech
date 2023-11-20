@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
 	id: 'undefined',
 	username: 'undefined',
+	name: 'undefined',
 	lastname: 'undefined',
 	email: 'undefined',
 	direccion: 'undefined',
@@ -22,9 +23,10 @@ export const userSlice = createSlice({
 	reducers: {
     // Este reducer se encarga de almacenar los datos del usuario
 		addUser: (state, action) => {
-      const { id, username, lastname, email, direccion, telefono, genero, nacimiento, createdAt, avatar } = action.payload
+      const { id, username, name, lastname, email, direccion, telefono, genero, nacimiento, createdAt, avatar } = action.payload
       state.id = id
       state.username = username
+			state.name = name
       state.lastname = lastname
       state.email = email
 			state.direccion = direccion

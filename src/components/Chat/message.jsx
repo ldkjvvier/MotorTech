@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-export const Message = ({ username, message }) => {
+export const Message = ({ username, message, email}) => {
 	const user = useSelector((state) => state.user)
 	const isCurrentUser = username === user.username
 

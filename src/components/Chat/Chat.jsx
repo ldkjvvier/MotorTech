@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import React from 'react'
 export const Chat = () => {
 	const user = useSelector((state) => state.user)
-
+	console.log(user);
 	const [socket, setSocket] = useState(null)
 	const [roomname, setRoomname] = useState('general')
 	const [message, setMessage] = useState('')
@@ -49,6 +49,7 @@ export const Chat = () => {
 							userId: data.userId,
 							username: data.username,
 							message: data.message,
+							email: data.email,
 						},
 					])
 				}
@@ -60,17 +61,19 @@ export const Chat = () => {
 			})
 		}
 	}, [socket])
-
+	console.log(users);
 	const handleJoin = () => {
 		if (user.username && roomname) {
 			const username = user.username
 			socket.emit('joinRoom', { username, roomname })
 			socket.on('getChat', (data) => {
+				console.log(data);
 				setChat(
 					data.messageData.map((message) => ({
 						userId: message.user,
 						username: message.user,
 						message: message.message,
+						email: message.email,
 					}))
 				)
 			})
@@ -79,7 +82,7 @@ export const Chat = () => {
 
 	const handleSendMessage = () => {
 		if (message) {
-			socket.emit('chat', message)
+			socket.emit('chat', message, user.email)
 			scrollToBottom()
 		}
 	}
@@ -90,7 +93,7 @@ export const Chat = () => {
 	}
 
 	return (
-		<div className="p-2 sm:p-6 justify-between flex flex-col h-full  ">
+		<div className="p-2 sm:p-6 justify-between flex flex-col h-screen  ">
 			<div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
 				<div className="relative flex items-center space-x-4">
 					<div className="relative">
@@ -187,9 +190,9 @@ export const Chat = () => {
 				id="messages"
 				className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
 			>
-				{chat.map((msg, index) => (
-					<React.Fragment key={index}>
-						<Message username={msg.username} message={msg.message} />
+				{chat.map((msg) => (
+					<React.Fragment key={msg.id}>
+						<Message username={msg.username} message={msg.message} email={msg.email} />
 					</React.Fragment>
 				))}
 			</article>
@@ -220,7 +223,7 @@ export const Chat = () => {
 					<input
 						type="text"
 						placeholder="Write your message!"
-						className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 pr-64 bg-gray-200 rounded-md py-3"
+						className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 pr-64 md:pr-6 bg-gray-200 rounded-md py-3 "
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 					/>

@@ -1,19 +1,17 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 export const Profile = () => {
-  const {
-		username,
+	const {
+		name,
 		lastname,
 		email,
 		telefono,
 		direccion,
 		nacimiento,
-    fecha_creacion,
+		fecha_creacion,
 	} = useSelector((state) => state.user)
 	return (
 		<div
-			className="bg-gray-100
-    dark:bg-slate-900
-    w-full h-auto"
+			className="bg-gray-100 dark:bg-slate-900 w-full"
 		>
 			<div className="container mx-auto  p-5">
 				<div className="md:flex no-wrap md:-mx-2">
@@ -27,7 +25,7 @@ export const Profile = () => {
 								/>
 							</div>
 							<h1 className="text-gray-900 dark:text-white text-center font-bold text-xl leading-8 my-1">
-								{`${username} ${lastname}`}
+								{`${name} ${lastname}`}
 							</h1>
 							<h3 className="text-gray-600 dark:text-gray-300 font-lg text-semibold leading-6">
 								Owner at Her Company Inc.
@@ -78,7 +76,7 @@ export const Profile = () => {
 											Nombre
 										</div>
 										<div className="px-4 py-2 dark:text-gray-400/80">
-											{username}
+											{name}
 										</div>
 									</div>
 									<div className="grid grid-cols-2">
