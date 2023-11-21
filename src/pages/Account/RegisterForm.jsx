@@ -158,10 +158,6 @@ export const SecondStep = () => {
 					required
 				/>
 			</div>
-
-			{
-				<p className="text-center text-red-500 text-xs font-semibold mt-5"></p>
-			}
 		</>
 	)
 }

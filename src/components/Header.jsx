@@ -16,7 +16,7 @@ export const Header = () => {
 		<header>
 			<nav className="bg-white dark:bg-gray-800 border-b dark:border-gray-500 shadow-xl">
 				<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 p-3 h-auto">
-					<div className="flex flex-wrap  items-center justify-between">
+					<div className="flex flex-wrap  items-center justify-end md:justify-between">
 						<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 							<Link
 								className="flex flex-shrink-0 items-center"
@@ -27,9 +27,10 @@ export const Header = () => {
 									src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 									alt="Your Company"
 								/>
+								<span className='pl-6 text-black dark:text-white font-sans text-xl'>MotorTech</span>
 							</Link>
 							{/* Barra de navegacion */}
-							<section className=" sm:ml-6 sm:block">
+							<section className=" sm:ml-6 sm:block hidden ">
 								<div className="flex space-x-4">
 									<Link
 										to={'motortech-cl'}
