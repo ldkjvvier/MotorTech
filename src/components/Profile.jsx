@@ -1,17 +1,18 @@
 import { useSelector } from 'react-redux'
 export const Profile = () => {
 	const {
-		username,
 		name,
 		lastname,
 		email,
-		phone,
-		address,
-		date,
+		telefono,
+		direccion,
+		nacimiento,
 		fecha_creacion,
 	} = useSelector((state) => state.user)
 	return (
-		<div className="bg-gray-100 dark:bg-slate-900 w-full">
+		<div
+			className="bg-gray-100 dark:bg-slate-900 w-full"
+		>
 			<div className="container mx-auto  p-5">
 				<div className="md:flex no-wrap md:-mx-2">
 					<div className="w-full md:w-3/12 md:mx-2">
@@ -88,14 +89,6 @@ export const Profile = () => {
 									</div>
 									<div className="grid grid-cols-2">
 										<div className="px-4 py-2 font-semibold">
-											Nombre de usuario
-										</div>
-										<div className="px-4 py-2 dark:text-gray-400/80">
-											{username}
-										</div>
-									</div>
-									<div className="grid grid-cols-2">
-										<div className="px-4 py-2 font-semibold">
 											Género
 										</div>
 										<div className="px-4 py-2 dark:text-gray-400/80">
@@ -107,7 +100,7 @@ export const Profile = () => {
 											Número
 										</div>
 										<div className="px-4 py-2 dark:text-gray-400/80">
-											{phone}
+											{telefono}
 										</div>
 									</div>
 									<div className="grid grid-cols-2">
@@ -115,7 +108,7 @@ export const Profile = () => {
 											Dirección
 										</div>
 										<div className="px-4 py-2 dark:text-gray-400/80">
-											{address}
+											{direccion}
 										</div>
 									</div>
 									<div className="grid grid-cols-2">
@@ -136,7 +129,7 @@ export const Profile = () => {
 											Fecha de nacimiento
 										</div>
 										<div className="px-4 py-2 dark:text-gray-400/80">
-											{date}
+											{nacimiento}
 										</div>
 									</div>
 								</div>

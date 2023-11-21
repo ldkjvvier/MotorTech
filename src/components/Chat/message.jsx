@@ -1,16 +1,16 @@
 import { useSelector } from 'react-redux'
 
-export const Message = ({ name, message, email }) => {
+export const Message = ({ username, message, email}) => {
 	const user = useSelector((state) => state.user)
-	const isCurrentUser = name === user.name
+	const isCurrentUser = username === user.username
 
 	const getContainerClass = () => {
-		if (!name) return 'items-center justify-center'
+		if (!username) return 'items-center justify-center'
 		return isCurrentUser ? 'items-end justify-end' : 'items-end'
 	}
 
 	const getMessageClass = () => {
-		if (!name) return 'bg-blue-600 text-white'
+		if (!username) return 'bg-blue-600 text-white'
 		return isCurrentUser
 			? 'rounded-lg inline-block rounded-br-none bg-blue-600 text-white'
 			: 'rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600'
@@ -33,11 +33,11 @@ export const Message = ({ name, message, email }) => {
 							<span
 								className={`px-4 py-2 rounded-lg inline-block ${getMessageClass()}`}
 							>
-								{name && <strong>{name}:</strong>} {message}
+								{username && <strong>{username}:</strong>} {message}
 							</span>
 						</div>
 					</div>
-					{!name && !isCurrentUser && (
+					{!username && !isCurrentUser && (
 						<img
 							src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
 							alt="My profile"

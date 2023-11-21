@@ -7,10 +7,10 @@ const initialState = {
 	name: 'undefined',
 	lastname: 'undefined',
 	email: 'undefined',
-	address: 'undefined',
-	phone: 'undefined',
-	gender: 'undefined',
-	date: 'undefined',
+	direccion: 'undefined',
+	telefono: 'undefined',
+	genero: 'undefined',
+	nacimiento: 'undefined',
 	createdAt: 'undefined',
 	avatar:
 		'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
@@ -21,37 +21,25 @@ export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		// Este reducer se encarga de almacenar los datos del usuario
+    // Este reducer se encarga de almacenar los datos del usuario
 		addUser: (state, action) => {
-			const {
-				id,
-				username,
-				name,
-				lastname,
-				email,
-				address,
-				phone,
-				gender,
-				date,
-				createdAt,
-				avatar,
-			} = action.payload
-			state.id = id
-			state.username = username
+      const { id, username, name, lastname, email, direccion, telefono, genero, nacimiento, createdAt, avatar } = action.payload
+      state.id = id
+      state.username = username
 			state.name = name
-			state.lastname = lastname
-			state.email = email
-			state.address = address
-			state.phone = phone
-			state.gender = gender
-			state.date = date
+      state.lastname = lastname
+      state.email = email
+			state.direccion = direccion
+			state.telefono = telefono
+			state.genero = genero
+			state.nacimiento = nacimiento
 			state.fecha_creacion = createdAt
-			state.avatar = avatar
+      state.avatar = avatar
 		},
-		// Este reducer se encarga de eliminar los datos del usuario
+    // Este reducer se encarga de eliminar los datos del usuario
 		removeUser: () => {
 			localStorage.removeItem('token')
-			return initialState
+			return initialState;
 		},
 	},
 })

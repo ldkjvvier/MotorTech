@@ -4,6 +4,7 @@ import { UserPage } from './pages/UserPage/UserPage'
 import { Profile } from './components/Profile'
 import { Header } from './components/header'
 import { Footer } from './components/footer'
+import { Home } from './pages/Home/Home'
 import { Error404 } from './pages/404/404'
 import { Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -38,8 +39,9 @@ export const App = () => {
 		// Rutas publicas
 		return (
 			<Routes>
-				<Route path="*" element={<Login />} />
-				<Route path="register" element={<Register />} />
+				<Route path="/" element={<Home />} />
+				<Route path="Login" element={<Login />} />
+				<Route path="*" element={<Error404 />} />
 			</Routes>
 		)
 	}

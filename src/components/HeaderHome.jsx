@@ -1,16 +1,14 @@
 import {
-	Dropdown,
 	DarkThemeToggle,
 	Flowbite,
-	Avatar,
+	Button,
 } from 'flowbite-react'
-import { customTheme } from '../constants'
-import { useSelector } from 'react-redux'
-import { Logout } from '../pages/Account/logout'
-import { Link } from 'react-router-dom'
-export const Header = () => {
-	const user = useSelector((state) => state.user)
 
+import { Link } from 'react-router-dom'
+import { customTheme } from '../constants'
+import { HiUserCircle } from 'react-icons/hi'
+
+export const HeaderHome = () => {
 	return (
 		<header>
 			<nav className="bg-white dark:bg-gray-800 border-b dark:border-gray-500 shadow-xl">
@@ -84,44 +82,11 @@ export const Header = () => {
 									</svg>
 								</button>
 							</div>
-							<div className="flex md:order-2 ml-2">
-								<Dropdown
-									arrowIcon={false}
-									inline
-									label={
-										<Avatar
-											alt="User settings"
-											img={user.avatar}
-											rounded
-										/>
-									}
-								>
-									<Dropdown.Header className="text-gray-900 dark:text-white">
-										<span className="block text-sm">
-											{`${user.username} ${user.lastname}`}
-										</span>
-										<span className="block truncate text-sm font-medium">
-											{user.email}
-										</span>
-									</Dropdown.Header>
-
-									<Dropdown.Item
-										as={Link}
-										to={`motortech-cl/profile`}
-										className="text-gray-900 dark:text-white"
-									>
-										Perfil
-									</Dropdown.Item>
-									<Dropdown.Item className="text-gray-900 dark:text-white">
-										Configuración
-									</Dropdown.Item>
-									<Dropdown.Divider theme={{ theme: customTheme }} />
-									<Logout>
-										<Dropdown.Item className="text-gray-900 dark:text-white">
-											Cerrar sesión
-										</Dropdown.Item>
-									</Logout>
-								</Dropdown>
+							<div className="flex flex-wrap gap-2">
+								<Button as={Link} to={'/login'} className="text-black dark:text-white">
+									<HiUserCircle className="mr-2 h-5 w-5 text-black dark:text-white" />
+									  Iniciar Sesión
+								</Button>
 							</div>
 						</div>
 					</div>
