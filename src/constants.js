@@ -1,5 +1,5 @@
 export const api = 'http://localhost:1337'
-
+export const token = ''
 // Temas customizados para FlowBite
 export const customTheme = {
 	darkThemeToggle: {
