@@ -1,4 +1,5 @@
 import { Login } from './pages/Account/login'
+import { Register } from './pages/Account/Register'
 import { UserPage } from './pages/UserPage/UserPage'
 import { Profile } from './components/Profile'
 import { Header } from './components/header'
@@ -8,6 +9,7 @@ import { Error404 } from './pages/404/404'
 import { Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+
 export const App = () => {
 	const user = useSelector((state) => state.user)
 	// Rutas privadas
@@ -15,7 +17,7 @@ export const App = () => {
 		return (
 			<>
 				<Header />
-				<main className="h-full dark:bg-slate-900 ">
+				<main className="h-full dark:bg-gradient-to-b from-slate-900 to-gray-800 ">
 					<Routes>
 						<Route
 							path="motortech-cl/"
