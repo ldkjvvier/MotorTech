@@ -8,7 +8,6 @@ import { customTheme } from '../constants'
 import { useSelector } from 'react-redux'
 import { Logout } from '../pages/Account/logout'
 import { Link } from 'react-router-dom'
-import { MagicMotion } from 'react-magic-motion'
 export const Header = () => {
 	const user = useSelector((state) => state.user)
 
@@ -20,7 +19,7 @@ export const Header = () => {
 						<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 							<Link
 								className="flex flex-shrink-0 items-center"
-								to={'/'}
+								to={'/motortech-cl'}
 							>
 								<img
 									className="h-8 w-auto"

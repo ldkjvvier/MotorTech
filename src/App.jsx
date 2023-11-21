@@ -16,7 +16,7 @@ export const App = () => {
 		return (
 			<>
 				<Header />
-				<main className="h-full dark:bg-slate-900 ">
+				<main className="h-full dark:bg-gradient-to-b from-slate-900 to-gray-800 ">
 					<Routes>
 						<Route
 							path="motortech-cl/"

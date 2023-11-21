@@ -73,13 +73,13 @@ export const Login = () => {
 							<img
 								aria-hidden="true"
 								className="object-cover w-full h-full dark:hidden"
-								src="https://64.media.tumblr.com/de2b6d95a6b6e5255402aeb26de01213/a041c40e4b93fd23-c7/s1280x1920/998315823e4e13f5f067a5ac14b710c635b99a39.jpg"
+								src="https://img.freepik.com/fotos-premium/regreso-al-futuro-coche-delorean_900101-12128.jpg"
 								alt="Office"
 							/>
 							<img
 								aria-hidden="true"
 								className="hidden object-cover w-full h-full dark:block"
-								src="https://64.media.tumblr.com/de2b6d95a6b6e5255402aeb26de01213/a041c40e4b93fd23-c7/s1280x1920/998315823e4e13f5f067a5ac14b710c635b99a39.jpg"
+								src="https://cdn.dribbble.com/users/2578957/screenshots/6551149/delorean_retro_80s_flyer_1980s_template_poster_wall_synth_wave_new_retro.jpg"
 								alt="Office"
 							/>
 						</div>
