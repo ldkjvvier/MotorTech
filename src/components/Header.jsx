@@ -8,6 +8,7 @@ import { customTheme } from '../constants'
 import { useSelector } from 'react-redux'
 import { Logout } from '../pages/Account/logout'
 import { Link } from 'react-router-dom'
+import { MagicMotion } from 'react-magic-motion'
 export const Header = () => {
 	const user = useSelector((state) => state.user)
 
@@ -98,7 +99,7 @@ export const Header = () => {
 								>
 									<Dropdown.Header className="text-gray-900 dark:text-white">
 										<span className="block text-sm">
-											{`${user.username} ${user.lastname}`}
+											{`${user.name} ${user.lastname}`}
 										</span>
 										<span className="block truncate text-sm font-medium">
 											{user.email}

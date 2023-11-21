@@ -1,4 +1,5 @@
 import { Login } from './pages/Account/login'
+import { Register } from './pages/Account/Register'
 import { UserPage } from './pages/UserPage/UserPage'
 import { Profile } from './components/Profile'
 import { Header } from './components/header'
@@ -6,6 +7,7 @@ import { Footer } from './components/footer'
 import { Error404 } from './pages/404/404'
 import { Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+
 
 export const App = () => {
 	const user = useSelector((state) => state.user)
@@ -37,6 +39,7 @@ export const App = () => {
 		return (
 			<Routes>
 				<Route path="*" element={<Login />} />
+				<Route path="register" element={<Register />} />
 			</Routes>
 		)
 	}

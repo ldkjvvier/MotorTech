@@ -47,7 +47,7 @@ export const Chat = () => {
 						...prevChat,
 						{
 							userId: data.userId,
-							username: data.username,
+							name: data.name,
 							message: data.message,
 							email: data.email,
 						},
@@ -63,15 +63,15 @@ export const Chat = () => {
 	}, [socket])
 	console.log(users);
 	const handleJoin = () => {
-		if (user.username && roomname) {
-			const username = user.username
-			socket.emit('joinRoom', { username, roomname })
+		if (user.name && roomname) {
+			const name = user.name
+			socket.emit('joinRoom', { name, roomname })
 			socket.on('getChat', (data) => {
 				console.log(data);
 				setChat(
 					data.messageData.map((message) => ({
 						userId: message.user,
-						username: message.user,
+						name: message.user,
 						message: message.message,
 						email: message.email,
 					}))
@@ -115,9 +115,7 @@ export const Chat = () => {
 					</div>
 					<div className="flex flex-col leading-tight">
 						<div className="text-2xl mt-1 flex items-center">
-							<span className="text-gray-700 mr-3">
-								{user.username}
-							</span>
+							<span className="text-gray-700 mr-3">{user.name}</span>
 						</div>
 						<span className="text-lg text-gray-600">
 							Junior Developer
@@ -192,7 +190,11 @@ export const Chat = () => {
 			>
 				{chat.map((msg) => (
 					<React.Fragment key={msg.id}>
-						<Message username={msg.username} message={msg.message} email={msg.email} />
+						<Message
+							name={msg.name}
+							message={msg.message}
+							email={msg.email}
+						/>
 					</React.Fragment>
 				))}
 			</article>
@@ -222,7 +224,7 @@ export const Chat = () => {
 					</span>
 					<input
 						type="text"
-						placeholder="Write your message!"
+						placeholder="Escribe un mensaje..."
 						className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 pr-64 md:pr-6 bg-gray-200 rounded-md py-3 "
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
