@@ -1,4 +1,4 @@
-export const Services = () => {
+export const Services = ({children}) => {
 	const callouts = [
 		{
 			name: 'Lavado de autos',
@@ -56,42 +56,45 @@ export const Services = () => {
 	]
 
 	return (
-		<section className="flex w-full justify-center items-center">
-			<div className=" dark:bg-transparent w-full">
-				<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
-					<div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
-						<h2 className="text-center text-xl font-semibold leading-8 dark:text-gray-200 text-gray-900 sm:text-2xl sm:leading-9">
-							Nuestros servicios
-						</h2>
+		<>
+			<section className="flex w-full justify-center items-center">
+				<div className=" dark:bg-transparent w-full">
+					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+						<div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
+							<h2 className="text-5xl font-bold text-gray-800 dark:text-white">
+								Nuestros Servicios
+							</h2>
 
-						<div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
-							{callouts.map((callout) => (
-								<div
-									key={callout.name}
-									className="group relative pb-8"
-								>
-									<div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:scale-105 group-hover:opacity-80 sm:h-64 transition duration-300">
-										<img
-											src={callout.imageSrc}
-											alt={callout.imageAlt}
-											className="h-full w-full object-cover object-center"
-										/>
+							<div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+								{callouts.map((callout) => (
+									<div
+										key={callout.name}
+										className="group relative pb-8"
+									>
+										<div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:scale-105 group-hover:opacity-80 sm:h-64 transition duration-300">
+											<img
+												src={callout.imageSrc}
+												alt={callout.imageAlt}
+												className="h-full w-full object-cover object-center"
+											/>
+										</div>
+										<h3 className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+											<a href={callout.href}>
+												<span className="absolute inset-0" />
+												{callout.name}
+											</a>
+										</h3>
+										<p className="text-base font-semibold text-gray-900 dark:text-gray-300">
+											{callout.description}
+										</p>
 									</div>
-									<h3 className="mt-6 text-sm text-gray-500 dark:text-gray-400">
-										<a href={callout.href}>
-											<span className="absolute inset-0" />
-											{callout.name}
-										</a>
-									</h3>
-									<p className="text-base font-semibold text-gray-900 dark:text-gray-300">
-										{callout.description}
-									</p>
-								</div>
-							))}
+								))}
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+			{children}
+		</>
 	)
 }

@@ -1,4 +1,3 @@
-import Chat from './Components/Chat/Chat'
 import { Services } from './Components/Services'
 export const UserPage = () => {
 	return (
@@ -16,10 +15,10 @@ export const UserPage = () => {
 						<figure className="mt-10">
 							<blockquote className="text-center text-xl font-semibold leading-8 dark:text-gray-300 text-gray-900 sm:text-2xl sm:leading-9">
 								<p>
-									“Lorem ipsum dolor sit amet consectetur adipisicing
-									elit. Nemo expedita voluptas culpa sapiente alias
-									molestiae. Numquam corrupti in laborum sed rerum et
-									corporis.”
+									“MotorTech es una empresa que se preocupa por la
+									satisfacción de sus clientes, brindando un servicio
+									de calidad, con la mejor tecnología y personal
+									altamente calificado .”
 								</p>
 							</blockquote>
 							<figcaption className="mt-10">
@@ -30,7 +29,7 @@ export const UserPage = () => {
 								/>
 								<div className="mt-4 flex items-center justify-center space-x-3 text-base">
 									<div className="font-semibold text-gray-900 dark:text-gray-400">
-										Judith Black
+										Javier Madariaga
 									</div>
 									<svg
 										viewBox="0 0 2 2"
@@ -42,7 +41,7 @@ export const UserPage = () => {
 										<circle cx={1} cy={1} r={1} />
 									</svg>
 									<div className="text-gray-600 dark:text-indigo-500/90">
-										CEO of Workcation
+										CEO of MotorTech
 									</div>
 								</div>
 							</figcaption>

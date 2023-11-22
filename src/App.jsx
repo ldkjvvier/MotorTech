@@ -1,6 +1,8 @@
 import { Login } from './pages/Account/login'
 import { Register } from './pages/Account/Register'
 import { UserPage } from './pages/UserPage/UserPage'
+import { PremiumServices } from './components/PremiumServices'
+import { Services } from './pages/UserPage/Components/Services'
 import { Profile } from './pages/UserPage/Components/Profile'
 import { Header } from './pages/UserPage/Components/Header'
 import { Footer } from './components/footer'
@@ -21,6 +23,11 @@ export const App = () => {
 						<Route
 							path="motortech-cl/"
 							element={<UserPage />}
+							exact
+						/>
+						<Route
+							path="motortech-cl/services"
+							element={<Services><PremiumServices/></Services>}
 							exact
 						/>
 						<Route
