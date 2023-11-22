@@ -4,7 +4,7 @@ import {
 	Flowbite,
 	Avatar,
 } from 'flowbite-react'
-import { customTheme, api } from '../../../constants'
+import { customTheme } from '../../../constants'
 import { useSelector } from 'react-redux'
 import { Logout } from '../../Account/logout'
 import { Link } from 'react-router-dom'
