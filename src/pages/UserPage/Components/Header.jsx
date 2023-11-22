@@ -4,9 +4,9 @@ import {
 	Flowbite,
 	Avatar,
 } from 'flowbite-react'
-import { customTheme } from '../constants'
+import { customTheme } from '../../../constants'
 import { useSelector } from 'react-redux'
-import { Logout } from '../pages/Account/logout'
+import { Logout } from '../../Account/logout'
 import { Link } from 'react-router-dom'
 export const Header = () => {
 	const user = useSelector((state) => state.user)

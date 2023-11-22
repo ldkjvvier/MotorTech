@@ -12,7 +12,7 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				'my-background': "url('404-background.png')",
+				'my-background': "url('/images/404-background.png')",
 			},
 		},
 	},

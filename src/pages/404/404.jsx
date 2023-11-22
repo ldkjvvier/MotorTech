@@ -4,7 +4,7 @@ export const Error404 = () => {
     return (
         <main className="grid bg-cover bg-center h-screen place-items-center bg-my-background">
             <div className="text-center flex flex-col items-center pb-20 ">
-                <img src="404.png" className="h-28 w-auto ml-6 mb-6"></img>
+                <img src="/images/404.png" className="h-28 w-auto ml-6 mb-6"></img>
                 <p className="font-semibold text-orange-400 text-7xl">404</p>
                 <h1 className="mt-4 text-2xl font-semibold tracking-tight sm:text-5xl">
                     ¿¡OOOOOOPS!?

@@ -1,5 +1,5 @@
-import Chat from '../../components/Chat/Chat'
-import { Services } from '../../components/Services'
+import Chat from './Components/Chat/Chat'
+import { Services } from './Components/Services'
 export const UserPage = () => {
 	return (
 		<>

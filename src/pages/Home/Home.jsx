@@ -1,7 +1,10 @@
-import { HeaderHome } from '../../components/HeaderHome'
+import { HeaderHome } from './Components/Header'
 import { Footer } from '../../components/footer'
 import { Carousel } from 'flowbite-react'
-import { Hat, Info, Msg } from '../../components/Icons/Icons'
+import { Hat, Info, Msg } from '../../components/Icons'
+
+
+
 
 export const Home = () => {
 	return (
@@ -10,10 +13,10 @@ export const Home = () => {
 
 			<main className="min-h-screen">
 				{/*Aqui comienza el carrusel */}
-				<div className="h-48 flex justify-center">
+				<div className="h-56 sm:h-[32rem] xl:h-[42rem]">
 					<Carousel slide={false}>
-						<img src="/Fondo-taller.jpg" alt="..." />
-						<img src="/Fondo-taller2.jpg" alt="..." />
+						<img src="/images/Fondo-taller.jpg" alt="..." />
+						<img src="/images/Fondo-taller2.jpg" alt="..." />
 					</Carousel>
 				</div>
 				{/*Aqui Termina el carrusel */}
@@ -52,7 +55,7 @@ export const Home = () => {
 					</article>
 					<article className="md:w-1/2">
 						<img
-							src="/Mecanico-section.jpeg"
+							src="/images/Mecanico-section.jpeg"
 							alt="Mecanico"
 							className="h-full w-full object-cover"
 						/>

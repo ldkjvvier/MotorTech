@@ -1,14 +1,13 @@
 import { Login } from './pages/Account/login'
 import { Register } from './pages/Account/Register'
 import { UserPage } from './pages/UserPage/UserPage'
-import { Profile } from './components/Profile'
-import { Header } from './components/header'
+import { Profile } from './pages/UserPage/Components/Profile'
+import { Header } from './pages/UserPage/Components/Header'
 import { Footer } from './components/footer'
 import { Home } from './pages/Home/Home'
 import { Error404 } from './pages/404/404'
 import { Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
 
 export const App = () => {
 	const user = useSelector((state) => state.user)
